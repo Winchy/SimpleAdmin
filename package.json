@@ -1,0 +1,23 @@
+{
+  "name": "simple-config",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon --inspect=127.0.0.1:9230 ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "express-vue": "^5.7.1",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "mongoose": "^5.3.7",
+    "morgan": "~1.9.0",
+    "nodemon": "^1.18.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0"
+  }
+}
