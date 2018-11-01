@@ -2,56 +2,21 @@ html, body {
     margin: 0;
     padding: 0;
 }
-.map-container {
+
+.page-container {
+    padding: 0 20px;
+    width: 960px;
+    margin: 0 auto;
 }
 
-.map-image-container {
-    width: calc(100% - 300px);
-}
-
-.map-image {
-    //background: url('/images/map/kongmiao.jpg');
-    margin: 0;
-    padding: 0;
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-.text-panel, .text-floating-panel {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 200px;
-    min-width: 200px;
-    height: 200px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    padding: 20px;
-}
-
-.draw-control-pannel {
+.main-nav {
     display: flex;
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    width: 100%;
+    justify-content: flex-end;
+    margin-bottom: 40px;
 }
 
-.draw-btn {
-    margin-left:20px; 
-    text-align: center;
-    padding: 5px;
-    border-radius: 5px;
-    background-color: #FFF;
-    border: 1px solid black;
+.main-nav > a {
+    display: block;
+    margin-left: 20px;
 }
 
-.path-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none; 
-    width: 100%;
-    height: 100%;
-}

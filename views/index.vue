@@ -1,9 +1,21 @@
 <template>
-    <div>
-        <a v-on:click.prevent='path = "/"' href='./'>home</a>
-        <a v-on:click.prevent='path = "/version"' href='./versions'>versions</a>
-        <a v-on:click.prevent='path = "/deploy"' href='./deploy'>deploy</a>
-        <component v-bind:is='viewComponent'></component> 
+    <div class='page-container'>
+        <header>
+            <h1 class='page-title'>Simple Admin</h1>
+        </header>
+        <nav class='main-nav'>
+            <a v-on:click.prevent='path = "/"' href='./'>home</a>
+            <a v-on:click.prevent='path = "/version"' href='./versions'>versions</a>
+            <a v-on:click.prevent='path = "/deploy"' href='./deploy'>deploy</a>
+        </nav>
+        <div class='content'>
+            <component v-bind:is='currentPage' v-bind:project='currentProject' @show-version='showVersion'></component>
+            <!---
+            <project-list v-if='path == "/"'></project-list> 
+            <version-control v-if='path == "/version"'></version-control> 
+            <deploy-comp v-if='path == "/deploy"'></deploy-comp> 
+            -->
+        </div>
     </div>
 </template>
 <script type='text/javascript'>
@@ -12,41 +24,39 @@ import project_list from './project_list.vue'
 import version_control from './version_control.vue'
 import deploy from './deploy.vue'
 
-var routes = {
-    '/': project_list,
-    '/version': version_control,
-    '/deploy': deploy
-} 
-
 export default {
     components: {
-        
+        projectList: project_list,
+        versionControl: version_control,
+        deployComp: deploy,
+        currentProject: {}
     },
     data: function() {
         return {
             path: '/',
-            routes
+            currentPage: 'projectList',
+            routes: {
+                '/': 'projectList',
+                '/version': 'versionControl',
+                '/deploy': 'deployComp'
+            }
         };
     },
     computed:{
-        view: function() {
-            return this.path + '.vue';
-        },
-        viewComponent: function() {
-            return this.routes[this.path];
-        }
     },
     watch: {
-        path: function(newPath) {
+        path: function() {
             console.log(this.path);
+            this.currentPage = this.routes[this.path];
         }
     },
     mounted: function() {
+        console.log(this, $);
     },
     methods: {
-        goto: function(path) {
-            console.log(path);
-            this.path = 'path';
+        showVersion: function(e) {
+            this.currentProject = e;
+            this.path = '/version';
         }
     }
 }

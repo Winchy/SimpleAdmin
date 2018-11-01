@@ -1,0 +1,63 @@
+  dev_scripts: 'ffff',
+  product_res: 'ggg',
+  product_scripts: 'aacc',
+  name: 'ddd' }
+(node:32297) UnhandledPromiseRejectionWarning: MongoError: E11000 duplicate key error collection: simple_admin.projects index: name_1 dup key: { : "ddd" }
+    at Function.create (/home/node/apps/simple_admin/node_modules/mongodb-core/lib/error.js:43:12)
+    at toError (/home/node/apps/simple_admin/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/node/apps/simple_admin/node_modules/mongodb/lib/operations/collection_ops.js:827:39)
+    at /home/node/apps/simple_admin/node_modules/mongodb-core/lib/connection/pool.js:532:18
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+(node:32297) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejec
+tion id: 1)
+(node:32297) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+create project
+ { name: 'ddd',
+  local_res: 'aaa',
+  local_scripts: 'ssss',
+  dev_res: 'dddd',
+  dev_scripts: 'ffff',
+  product_res: 'ggg',
+  product_scripts: 'aacc' }
+{ local_res: 'aaa',
+  local_scripts: 'ssss',
+  dev_res: 'dddd',
+  dev_scripts: 'ffff',
+  product_res: 'ggg',
+  product_scripts: 'aacc',
+  name: 'ddd' }
+(node:32297) UnhandledPromiseRejectionWarning: MongoError: E11000 duplicate key error collection: simple_admin.projects index: name_1 dup key: { : "ddd" }
+    at Function.create (/home/node/apps/simple_admin/node_modules/mongodb-core/lib/error.js:43:12)
+    at toError (/home/node/apps/simple_admin/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/node/apps/simple_admin/node_modules/mongodb/lib/operations/collection_ops.js:827:39)
+    at /home/node/apps/simple_admin/node_modules/mongodb-core/lib/connection/pool.js:532:18
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+(node:32297) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejec
+tion id: 2)
+create project
+ { name: 'ddd',
+  local_res: 'aaa',
+  local_scripts: 'ssss',
+  dev_res: 'dddd',
+  dev_scripts: 'ffff',
+  product_res: 'ggg',
+  product_scripts: 'aacc' }
+{ local_res: 'aaa',
+  local_scripts: 'ssss',
+  dev_res: 'dddd',
+  dev_scripts: 'ffff',
+  product_res: 'ggg',
+  product_scripts: 'aacc',
+  name: 'ddd' }
+(node:32297) UnhandledPromiseRejectionWarning: MongoError: E11000 duplicate key error collection: simple_admin.projects index: name_1 dup key: { : "ddd" }
+    at Function.create (/home/node/apps/simple_admin/node_modules/mongodb-core/lib/error.js:43:12)
+    at toError (/home/node/apps/simple_admin/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/node/apps/simple_admin/node_modules/mongodb/lib/operations/collection_ops.js:827:39)
+    at /home/node/apps/simple_admin/node_modules/mongodb-core/lib/connection/pool.js:532:18
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+(node:32297) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejec
+tion id: 3)
+
