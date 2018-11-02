@@ -1,17 +1,19 @@
 <template>
 <div>
-    <div class='add-project-panel'>
-        <button @click='showCreateForm = true'>create new project</button>
-    </div>
     <ul class='ul-project'>
-        <li @click='$emit("show-version", proj)' v-for='proj in projects'>
-            {{proj.name}}
+        <li class='head-column'>
+            <span>项目列表</span>
+            <button @click='showCreateForm = true'>[&nbsp+&nbsp]</button>
+        </li>
+        <li class='project-item' @click='$emit("show-version", proj)' v-for='proj in projects'>
+            <span>{{proj.name}}</span>
+            <button @click.stop='deleteProject(proj.name)'>[&nbsp-&nbsp]</button>
         </li>
     </ul>
 
-    <transition name='form'>
-    <div class='project-form-container' v-if='showCreateForm'>
-        <form id='project-form' @submit.prevent='createProject'>
+    <transition name='fade'>
+    <div class='popup-container project-form-container' v-if='showCreateForm'>
+        <form class='popup-content' id='project-form' @submit.prevent='createProject'>
                 <ul class='ul-form'>
                     <li>
                         <span>项目名</span><input v-model='projectName'></input>
@@ -59,65 +61,52 @@
 </template>
 
 <style scoped>
-.form-enter-active, .form-leave-active {
-    transition: opacity .5s;
-}
-.form-enter, .form-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    opacity: 0;
+
+.add-project-panel {
+    float: right;
 }
 
-.project-form-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    top: 0;
-    left: 0;
-}
-
-#project-form {
-    display: block;
-    position: absolute;
-    width: 500px;
-    background: #fff;
-    border-radius: 10px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-}
-
-.ul-form {
+.ul-project {
     list-style: none;
+    width: 500px;
+    border: 1px solid #EEE;
+    border-radius: 5px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
-.ul-form li {
-    margin: 10px 0;
+.ul-project span, .ul-project button {
+    display: block;
 }
 
-.ul-form li span {
-    display: inline-block;
-    width: 160px;
+.head-column, .project-item {
+    display: flex;
+    justify-content: space-between;
+    height: 25px;
+    line-height: 25px;
+    padding: 10px;
     font-size: 14px;
 }
 
-#project-form input {
-    border: none;
-    border-bottom: 1px solid #DDD;
-    height: 20px;
-    width: 250px;
-    padding: 5px;
+.project-item {
+    border-top: 1px solid #EEE;
 }
 
-.form-button-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-end;
+.project-item>button {
+    display: none;
 }
 
-.form-button-container button {
+.project-item:hover {
+    background-color: #fcfdf8;
+}
+
+.project-item:hover>button {
     display: block;
-    margin-left: 20px;
+}
+
+#project-form {
+    width: 500px;
 }
 
 </style>
@@ -136,7 +125,7 @@ export default {
             productRes: '',
             productScripts: '',
             projectName: '',
-            svnRoot: ''
+            svnRoot: '',
         };
     },
     mounted: function() {
@@ -152,12 +141,6 @@ export default {
             var params = {
                 name: this.projectName,
                 svnRoot: this.svnRoot,
-                localRes: this.localRes,
-                localScripts: this.localScripts,
-                devRes: this.devRes,
-                devScripts: this.devScripts,
-                productRes: this.productRes,
-                productScripts: this.productScripts
             };
             
             for (var k in params) {
@@ -172,6 +155,15 @@ export default {
                 this.getProjects();
                 this.showCreateForm = false;
             }); 
+        },
+        deleteProject: function(projName) {
+            console.log('about to delete project ' + projName);
+
+            var r = window.confirm(`确定删除工程${projName}?`);
+            if (!r) return;
+            $.post('/simple_admin/rest/projects/delete', {projectName: projName}).then((result) => {
+                this.getProjects();
+            });
         }
     }
 }

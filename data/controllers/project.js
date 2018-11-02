@@ -18,9 +18,15 @@ module.exports = {
             devScripts,
             productRes,
             productScripts,
-            svnRoot
+            svnRoot,
         }).save((err, result)=> {
             callback(err, result);
+        });
+    },
+
+    deleteProject(req) {
+        return model.deleteOne({
+            name: req.body.projectName
         });
     }
     
